@@ -8,8 +8,8 @@ npm i react-native-airplay --save
 #### Only iOS
 
   - Open your Xcode project
-  - In `Libraries` choose `Add files...` and add the `RCTAirplay.xcodeproj` from `node_modules/react-native-airplay` folder.
-  - If Xcode ask you for include the 'Bridging-Herder.h', accept it.
+  - In `Libraries` choose `Add files...` and add the obj-c/swift files from `node_modules/react-native-airplay` folder.
+  - If Xcode ask you for include the 'Bridging-Header.h', accept it.
   - Include in the `Bridging-Header.h` the next lines:
 
   ```
