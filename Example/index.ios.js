@@ -11,13 +11,13 @@ import {
   Text,
   View
 } from 'react-native';
-import RAirPlayButton from 'react-native-airplay'
+import AirPlayButton from 'react-native-airplay'
 
 class Example extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <RAirPlayButton style={{width: 40, height: 40, justifyContent: 'center', alignItems: 'center'}} />
+        <AirPlayButton style={{width: 40, height: 40, justifyContent: 'center', alignItems: 'center'}} />
       </View>
     );
   }

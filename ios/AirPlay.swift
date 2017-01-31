@@ -1,29 +1,14 @@
-//
-//  AirPlay.swift
-//  hybridlockerapp
-//
-//  Created by Guillermo Anaya on 6/14/16.
-//  Copyright © 2016 Facebook. All rights reserved.
-//
-
 import Foundation
 import MediaPlayer
 
-
-
 @objc(AirPlay)
-class AirPlay: NSObject {
-  
-  var bridge: RCTBridge!
+class AirPlay: RCTEventEmitter {
   
   @objc func startScan() -> Void {
-    print("init airplay");
-    //self.bridge.eventDispatcher().sendDeviceEventWithName("AirPlayChanged", body: ["value": true])
-    NSNotificationCenter.defaultCenter().addObserver(
-      self,
-      selector: #selector(AirPlay.airplayChanged(_:)),
-      name: AVAudioSessionRouteChangeNotification,
-      object: AVAudioSession.sharedInstance())
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(AirPlay.airplayChanged(sender:)),
+                                           name: NSNotification.Name.AVAudioSessionRouteChange,
+                                           object: AVAudioSession.sharedInstance())
   }
   
   func airplayChanged(sender: NSNotification) {
@@ -37,10 +22,11 @@ class AirPlay: NSObject {
       }
     }
     
-    self.bridge.eventDispatcher().sendDeviceEventWithName("airplayConnected", body: ["connected": isAirPlayPlaying])
+    self.sendEvent(withName: "airplayConnected",
+                   body: ["connected": isAirPlayPlaying])
   }
   
-  @objc func isAlredyConnected(callback: RCTResponseSenderBlock) -> Void {
+  @objc func isAlreadyConnected(callback: RCTResponseSenderBlock) -> Void {
     let currentRoute = AVAudioSession.sharedInstance().currentRoute
     for output in currentRoute.outputs {
       if output.portType == AVAudioSessionPortAirPlay {
@@ -52,13 +38,18 @@ class AirPlay: NSObject {
     callback([false])
     //return false
   }
+  
+  override func supportedEvents() -> [String]! {
+    return ["airplayConnected"]
+  }
+  
 }
 
 @objc(AirPlayButton)
 class AirPlayButton: RCTViewManager {
   override func view() -> UIView! {
-    let wrapperView = UIView(frame: CGRectMake(0, 0, 40, 40))
-    wrapperView.backgroundColor = UIColor.redColor()
+    let wrapperView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+    wrapperView.backgroundColor = UIColor.red
     wrapperView.translatesAutoresizingMaskIntoConstraints = false
     
     let volumneView = MPVolumeView(frame: wrapperView.bounds)

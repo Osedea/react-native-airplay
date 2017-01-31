@@ -12,9 +12,9 @@
     "ios",
     "AirPlay"
   ],
-  "main": "RAirPlayButton.js",
+  "main": "AirPlayButton.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:wanaya/react-native-airplay.git"
+    "url": "git@github.com:chourobin/react-native-airplay.git"
   }
 }
