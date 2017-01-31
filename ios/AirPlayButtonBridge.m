@@ -1,5 +1,5 @@
 #import <React/RCTViewManager.h>
 
-@interface RCT_EXTERN_MODULE(AirPlayButton, RCTViewManager)
+@interface RCT_EXTERN_MODULE(RCTAirPlayButton, RCTViewManager)
 
 @end

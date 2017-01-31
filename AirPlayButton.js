@@ -1,12 +1,12 @@
 import { requireNativeComponent } from 'react-native';
 import React, { Component, PropTypes } from 'react';
 
-let AirPlayButton = requireNativeComponent('AirPlayButton', AirPlayButton);
+const RCTAirPlayButton = requireNativeComponent('RCTAirPlayButton', AirPlayButton);
 
 class AirPlayButton extends Component {
   render() {
-    return (<AirPlayButton {...this.props} />);
-  } 
+    return (<RCTAirPlayButton {...this.props} />);
+  }
 }
 
 module.exports = AirPlayButton;

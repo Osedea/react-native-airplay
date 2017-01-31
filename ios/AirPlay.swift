@@ -1,16 +1,16 @@
 import Foundation
 import MediaPlayer
 
-@objc(AirPlay)
-class AirPlay: RCTEventEmitter {
-  
+@objc(RCTAirPlay)
+class RCTAirPlay: RCTEventEmitter {
+
   @objc func startScan() -> Void {
     NotificationCenter.default.addObserver(self,
-                                           selector: #selector(AirPlay.airplayChanged(sender:)),
+                                           selector: #selector(RCTAirPlay.airplayChanged(sender:)),
                                            name: NSNotification.Name.AVAudioSessionRouteChange,
                                            object: AVAudioSession.sharedInstance())
   }
-  
+
   func airplayChanged(sender: NSNotification) {
     let currentRoute = AVAudioSession.sharedInstance().currentRoute
     var isAirPlayPlaying = false
@@ -21,11 +21,11 @@ class AirPlay: RCTEventEmitter {
         break;
       }
     }
-    
+
     self.sendEvent(withName: "airplayConnected",
                    body: ["connected": isAirPlayPlaying])
   }
-  
+
   @objc func isAlreadyConnected(callback: RCTResponseSenderBlock) -> Void {
     let currentRoute = AVAudioSession.sharedInstance().currentRoute
     for output in currentRoute.outputs {
@@ -38,26 +38,26 @@ class AirPlay: RCTEventEmitter {
     callback([false])
     //return false
   }
-  
+
   override func supportedEvents() -> [String]! {
     return ["airplayConnected"]
   }
-  
+
 }
 
-@objc(AirPlayButton)
-class AirPlayButton: RCTViewManager {
+@objc(RCTAirPlayButton)
+class RCTAirPlayButton: RCTViewManager {
   override func view() -> UIView! {
-    let wrapperView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+    let wrapperView = UIView(frame: CGRect(x: 0, y: 0, width: 66.5, height: 34))
     wrapperView.backgroundColor = UIColor.red
     wrapperView.translatesAutoresizingMaskIntoConstraints = false
-    
+
     let volumneView = MPVolumeView(frame: wrapperView.bounds)
     volumneView.showsVolumeSlider = false
     wrapperView.addSubview(volumneView)
-    
+
     volumneView.sizeToFit()
-    
+
     return wrapperView
   }
 }
