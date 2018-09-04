@@ -1,11 +1,8 @@
 {
-  "name": "react-native-airplay",
+  "name": "@sweatworking/react-native-airplay",
   "description": "AirPlay library for iOS",
   "version": "0.0.1",
-  "author": {
-    "name": "Wanaya",
-    "email": "memoanaya@gmail.com"
-  },
+  "author": "Tim Naughton @tnaughts",
   "license": "MIT",
   "keywords": [
     "react-native",
@@ -15,6 +12,6 @@
   "main": "AirPlayButton.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:chourobin/react-native-airplay.git"
+    "url": "git@github.com:SweatWorking/react-native-airplay.git"
   }
 }
