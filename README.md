@@ -6,7 +6,7 @@ AirPlay library for iOS
 Add this line to your package.json:
 
 ```
-"react-native-airplay": "chourobin/react-native-airplay",
+"react-native-airplay": "SweatWorking/react-native-airplay",
 ```
 
 #### Only iOS
