@@ -48,15 +48,15 @@ class RCTAirPlay: RCTEventEmitter {
 @objc(RCTAirPlayButton)
 class RCTAirPlayButton: RCTViewManager {
   override func view() -> UIView! {
-    let wrapperView = UIView(frame: CGRect(x: 0, y: 0, width: 66.5, height: 34))
+    let wrapperView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
     wrapperView.backgroundColor = UIColor.red
     wrapperView.translatesAutoresizingMaskIntoConstraints = false
 
-    let volumneView = MPVolumeView(frame: wrapperView.bounds)
-    volumneView.showsVolumeSlider = false
-    wrapperView.addSubview(volumneView)
+    let volumeView = MPVolumeView(frame: wrapperView.bounds)
+    volumeView.showsVolumeSlider = false
+    wrapperView.addSubview(volumeView)
 
-    volumneView.sizeToFit()
+    volumeView.sizeToFit()
 
     return wrapperView
   }
