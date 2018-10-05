@@ -1,5 +1,5 @@
 {
-  "name": "@sweatworking/react-native-airplay",
+  "name": "@tnaughts/react-native-airplay",
   "description": "AirPlay library for iOS",
   "version": "0.0.1",
   "author": "Tim Naughton @tnaughts",
@@ -12,6 +12,16 @@
   "main": "AirPlayButton.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:SweatWorking/react-native-airplay.git"
+    "url": "git+ssh://git@github.com/SweatWorking/react-native-airplay.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SweatWorking/react-native-airplay/issues"
+  },
+  "homepage": "https://github.com/SweatWorking/react-native-airplay#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
