@@ -1,7 +1,7 @@
 {
   "name": "@tnaughts/react-native-airplay",
   "description": "AirPlay library for iOS",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Tim Naughton @tnaughts",
   "license": "MIT",
   "keywords": [
