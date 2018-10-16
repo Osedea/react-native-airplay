@@ -1,5 +1,5 @@
 {
-  "name": "@tnaughts/react-native-airplay",
+  "name": "react-native-airplay",
   "description": "AirPlay library for iOS",
   "version": "0.0.3",
   "author": "Tim Naughton @tnaughts",
