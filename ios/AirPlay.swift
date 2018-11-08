@@ -7,7 +7,7 @@ class RCTAirPlay: RCTEventEmitter {
   @objc func startScan() -> Void {
     NotificationCenter.default.addObserver(self,
                                            selector: #selector(RCTAirPlay.airplayChanged(sender:)),
-                                           name: AVAudioSession.routeChangeNotification,
+                                           name: NSNotification.Name.AVAudioSessionRouteChange,
                                            object: AVAudioSession.sharedInstance())
   }
 
@@ -15,7 +15,7 @@ class RCTAirPlay: RCTEventEmitter {
     let currentRoute = AVAudioSession.sharedInstance().currentRoute
     var isAirPlayPlaying = false
     for output in currentRoute.outputs {
-      if output.portType == AVAudioSession.Port.airPlay {
+      if output.portType == AVAudioSessionPortAirPlay {
         print("Airplay Device connected with name: \(output.portName)")
         isAirPlayPlaying = true
         break;
@@ -29,7 +29,7 @@ class RCTAirPlay: RCTEventEmitter {
   @objc func isAlreadyConnected(callback: RCTResponseSenderBlock) -> Void {
     let currentRoute = AVAudioSession.sharedInstance().currentRoute
     for output in currentRoute.outputs {
-      if output.portType == AVAudioSession.Port.airPlay {
+      if output.portType == AVAudioSessionPortAirPlay {
         print("Airplay Device connected with name: \(output.portName)")
         callback([true])
         //return true
@@ -49,13 +49,13 @@ class RCTAirPlay: RCTEventEmitter {
 class RCTAirPlayButton: RCTViewManager {
   override func view() -> UIView! {
     let wrapperView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-    wrapperView.backgroundColor = UIColor.red
+    wrapperView.backgroundColor = UIColor.clear
     wrapperView.translatesAutoresizingMaskIntoConstraints = false
 
     let volumeView = MPVolumeView(frame: wrapperView.bounds)
     volumeView.showsVolumeSlider = false
     wrapperView.addSubview(volumeView)
-volumeView.center = wrapperView.center
+    volumeView.center = wrapperView.center
     if let routeButton = volumeView.subviews.last as? UIButton,
       let routeButtonTemplateImage  = routeButton.currentImage?.withRenderingMode(.alwaysTemplate)
     {
